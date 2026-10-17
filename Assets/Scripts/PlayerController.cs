@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private Animator animator;
     [Header("Movimiento")]
     public float velocidad = 5f;
     private float movimientoHorizontal = 0f;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -31,8 +33,11 @@ public class PlayerController : MonoBehaviour
         // Verificar si presionó saltar (Espacio)
         if (Input.GetButtonDown("Jump"+playerNumber) && enSuelo)
         {
+            animator.SetTrigger("jump");
             rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
         }
+        animator.SetBool("enSuelo",enSuelo);
+        animator.SetBool("caminando",rb.velocity.x > 0.1 || rb.velocity.x < -0.1);
 
         // Voltear sprite según la dirección
         GestionarOrientacion();
