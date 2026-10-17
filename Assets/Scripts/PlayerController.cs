@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         // Comprobar si está tocando el suelo
         enSuelo = Physics2D.OverlapCircle(controladorSuelo.position, radioSuelo, queEsSuelo);
+        
 
         // Aplicar movimiento horizontal
         rb.velocity = new Vector2(movimientoHorizontal, rb.velocity.y);
