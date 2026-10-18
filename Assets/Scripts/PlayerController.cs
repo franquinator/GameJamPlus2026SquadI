@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"+playerNumber) && enSuelo)
         {
             animator.SetTrigger("jump");
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSFX);
             rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
         }
         animator.SetBool("enSuelo",enSuelo);
