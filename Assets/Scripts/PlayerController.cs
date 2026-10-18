@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -26,19 +27,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // MOVIMIENTO
         // Leer entrada horizontal (A/D o flechas izquierda/derecha)
-        movimientoHorizontal = Input.GetAxisRaw("Horizontal"+playerNumber) * velocidad;
+        movimientoHorizontal = Input.GetAxisRaw("Horizontal" + playerNumber) * velocidad;
 
+        // ANIMACIONES
         // Verificar si presionó saltar (Espacio)
-        if (Input.GetButtonDown("Jump"+playerNumber) && enSuelo)
+
+        if (Input.GetButtonDown("Jump" + playerNumber) && enSuelo)
         {
             animator.SetTrigger("jump");
             AudioManager.Instance.PlaySFX(AudioManager.Instance.jumpSFX);
             rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
         }
-        animator.SetBool("enSuelo",enSuelo);
-        animator.SetBool("caminando",rb.velocity.x > 0.1 || rb.velocity.x < -0.1);
-
+        animator.SetBool("enSuelo", enSuelo);
+        animator.SetBool("caminando", rb.velocity.x > 0.1 || rb.velocity.x < -0.1);
         // Voltear sprite según la dirección
         GestionarOrientacion();
     }
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         // Comprobar si está tocando el suelo
         enSuelo = Physics2D.OverlapCircle(controladorSuelo.position, radioSuelo, queEsSuelo);
-        
+
 
         // Aplicar movimiento horizontal
         rb.velocity = new Vector2(movimientoHorizontal, rb.velocity.y);
@@ -68,9 +71,7 @@ public class PlayerController : MonoBehaviour
     private void Girar()
     {
         mirandoDerecha = !mirandoDerecha;
-        Vector3 escala = transform.localScale;
-        escala.x *= -1;
-        transform.localScale = escala;
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
     }
 
     // Dibujar el radio del suelo en el editor de Unity (Gizmos)
