@@ -34,6 +34,7 @@ public class FlagController : MonoBehaviour
         StartCoroutine(AumentarBarra());
         numAleatorio = Random.Range(0, posicionesBandera.Length);
         StartCoroutine(moverBandera());
+        barraRosa.fillAmount = cantRosa / 100f;
     }
 
     // Update is called once per frame

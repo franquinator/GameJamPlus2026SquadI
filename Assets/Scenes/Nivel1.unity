@@ -2122,6 +2122,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1515476278863752335, guid: 2aee2762a8033171b9108811390f5203, type: 3}
   m_PrefabInstance: {fileID: 214992540}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1172447084 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6005282779563620390, guid: 2aee2762a8033171b9108811390f5203, type: 3}
+  m_PrefabInstance: {fileID: 214992540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172447082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1177963982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3526,7 +3537,7 @@ PrefabInstance:
     - target: {fileID: 4003860066368203422, guid: 751d17c70c5d6f5abaefde1ca9d0f6cf, type: 3}
       propertyPath: barraRosa
       value: 
-      objectReference: {fileID: 2040415810}
+      objectReference: {fileID: 1172447084}
     - target: {fileID: 4003860066368203422, guid: 751d17c70c5d6f5abaefde1ca9d0f6cf, type: 3}
       propertyPath: cartelRosa
       value: 
@@ -3805,17 +3816,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6728368, y: 0.8274449}
   m_EdgeRadius: 0
---- !u!114 &2040415810 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5650092018768752650, guid: 2aee2762a8033171b9108811390f5203, type: 3}
-  m_PrefabInstance: {fileID: 214992540}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2075678096
 GameObject:
   m_ObjectHideFlags: 0
