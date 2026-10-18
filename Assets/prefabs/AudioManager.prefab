@@ -55,7 +55,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -249,9 +249,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 7739957228142283631}
   sfxSource: {fileID: 5349877279460010813}
-  backgroundMusic: {fileID: 0}
-  jumpSFX: {fileID: 8300000, guid: cf34b95e1a786154c8e535459378f97d, type: 3}
-  shotSfx: {fileID: 0}
-  winSFX: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: 9daef37b91cd7734ab08bc8b2cb2d819, type: 3}
+  backgroundMusicMenu: {fileID: 8300000, guid: d7527fda86ebb484891fe9b37c3956d9, type: 3}
+  jumpSFX:
+  - {fileID: 8300000, guid: 1d23769f98c2992419129338943e8582, type: 3}
+  - {fileID: 8300000, guid: 519d69d1a2df5d347bf78f3ed2f15bf1, type: 3}
+  - {fileID: 8300000, guid: 324754dd33e900e41b9da80342845353, type: 3}
+  - {fileID: 8300000, guid: d72384d8d7e56f3429a9c05a455e837e, type: 3}
+  shotSfx: {fileID: 8300000, guid: 6f94d635ea2ff254c85a009a84faee36, type: 3}
+  golpeSfx: {fileID: 8300000, guid: 9e5f5d52c81e1b34c92d8b61dd931f13, type: 3}
+  winSFX: {fileID: 8300000, guid: cba09a91937372146a4a06b95ec546eb, type: 3}
   powerupSFX: {fileID: 0}
   deadSFX: {fileID: 0}
+  flagPointSFX: {fileID: 8300000, guid: d13e64c947da4934cb9d592db9988bba, type: 3}

@@ -16,6 +16,7 @@ public class ShootController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire" + playerNumber) && Time.time >= nextFireTime)
         {
+            AudioManager.Instance.PlayDisparo();
             Shoot();
             nextFireTime = Time.time + fireRate;
         }

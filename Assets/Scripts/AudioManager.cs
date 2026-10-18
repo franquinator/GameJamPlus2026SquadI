@@ -1,3 +1,4 @@
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -11,11 +12,14 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Clips de Ejemplo")]
     public AudioClip backgroundMusic;
-    public AudioClip jumpSFX;
+    public AudioClip backgroundMusicMenu;
+    public AudioClip[] jumpSFX;
     public AudioClip shotSfx;
+    public AudioClip golpeSfx;
     public AudioClip winSFX;
     public AudioClip powerupSFX;
     public AudioClip deadSFX;
+    public AudioClip flagPointSFX;
 
     private void Awake()
     {
@@ -35,16 +39,22 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         // Reproducir música de fondo al iniciar si se asignó una
-        if (backgroundMusic != null)
-        {
-            PlayMusic(backgroundMusic);
-        }
+        /*         if (backgroundMusic != null)
+                {
+                    PlayMusic(backgroundMusic);
+                } */
     }
 
     // Método para reproducir Música (Bucle activado por defecto)
-    public void PlayMusic(AudioClip clip)
+    public void PlayMatchMusic()
     {
-        musicSource.clip = clip;
+        musicSource.clip = backgroundMusic;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
+    public void PlayMenuMusic()
+    {
+        musicSource.clip = backgroundMusicMenu;
         musicSource.loop = true;
         musicSource.Play();
     }
@@ -52,11 +62,31 @@ public class AudioManager : MonoBehaviour
     // Método para reproducir Efectos de Sonido (SFX)
     public void PlaySFX(AudioClip clip)
     {
-        if(clip == null) return;
+        if (clip == null) return;
         // PlayOneShot permite reproducir sonidos simultáneos sin cortarse entre sí
-        sfxSource.PlayOneShot(clip); 
+        sfxSource.PlayOneShot(clip);
     }
+    public void PlaySalto()
+    {
+        sfxSource.PlayOneShot(jumpSFX[Random.Range(0, jumpSFX.Length)]);
+    }
+    public void PlayGolpe()
+    {
+        sfxSource.PlayOneShot(golpeSfx);
+    }
+    public void PlayDisparo()
+    {
+        sfxSource.PlayOneShot(shotSfx);
+    }
+    public void PlayFlagPoint()
+    {
+        sfxSource.PlayOneShot(flagPointSFX);
+    }
+    public void PlayWin()
+    {
+        sfxSource.PlayOneShot(winSFX);
 
+    }
     // Métodos opcionales para pausar/detener
     public void StopMusic() => musicSource.Stop();
 }

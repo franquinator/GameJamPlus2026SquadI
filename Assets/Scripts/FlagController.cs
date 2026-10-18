@@ -76,6 +76,7 @@ public class FlagController : MonoBehaviour
             yield return new WaitForSeconds(cadaCuantoCambia);
             if(jugadores.Count == 1)
             {
+                AudioManager.Instance.PlayFlagPoint();
                 if(jugadores[0].playerNumber == 2)
                 {
                     cantRosa += aumento;
@@ -102,6 +103,8 @@ public class FlagController : MonoBehaviour
     }
     private IEnumerator Win(int playerNumber)
     {
+        AudioManager.Instance.StopMusic();
+        AudioManager.Instance.PlayWin();
         if(playerNumber == 2)
         {
             cartelRosa.SetActive(true);
@@ -111,7 +114,7 @@ public class FlagController : MonoBehaviour
             cartelVerde.SetActive(true);
         }
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(4);
+        yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
