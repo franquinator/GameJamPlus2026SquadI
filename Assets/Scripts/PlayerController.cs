@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool mirandoDerecha = true;
-    [SerializeField]
-    private int playerNumber = 1;
+    public int playerNumber = 1;
 
     void Start()
     {
