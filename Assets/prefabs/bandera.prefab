@@ -140,6 +140,8 @@ MonoBehaviour:
   cantRosa: 50
   cadaCuantoCambia: 1
   aumento: 5
+  posicionesBandera: []
+  tiempoEntrePosiciones: 10
 --- !u!1 &5082679823938556496
 GameObject:
   m_ObjectHideFlags: 0

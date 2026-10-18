@@ -20,11 +20,16 @@ public class FlagController : MonoBehaviour
     private float aumento;
     private List<PlayerController> jugadores = new();
     SpriteRenderer colorFlag;
-    // Start is called before the first frame update
+
+    [SerializeField] private Transform[] posicionesBandera;
+    [SerializeField] private float tiempoEntrePosiciones = 10f;
+    private int numAleatorio;
     void Start()
     {
         colorFlag = GetComponent<SpriteRenderer>();
         StartCoroutine(AumentarBarra());
+        numAleatorio = Random.Range(0, posicionesBandera.Length);
+        StartCoroutine(moverBandera());
     }
 
     // Update is called once per frame
@@ -39,7 +44,7 @@ public class FlagController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadores.Add(other.GetComponent<PlayerController>());
-            if(jugadores.Count == 1)
+            if (jugadores.Count == 1)
             {
                 Color colorTagNew = jugadores[0].GetComponent<SpriteRenderer>().color;
                 colorFlag.color = colorTagNew;
@@ -57,7 +62,7 @@ public class FlagController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             jugadores.Remove(collision.GetComponent<PlayerController>());
-            if(jugadores.Count == 1)
+            if (jugadores.Count == 1)
             {
                 Color colorTagNew = jugadores[0].GetComponent<SpriteRenderer>().color;
                 colorFlag.color = colorTagNew;
@@ -71,17 +76,17 @@ public class FlagController : MonoBehaviour
     private IEnumerator AumentarBarra()
     {
         while (true)
-        {   
+        {
             yield return new WaitUntil(() => jugadores.Count == 1);
             yield return new WaitForSeconds(cadaCuantoCambia);
-            if(jugadores.Count == 1)
+            if (jugadores.Count == 1)
             {
                 AudioManager.Instance.PlayFlagPoint();
-                if(jugadores[0].playerNumber == 2)
+                if (jugadores[0].playerNumber == 2)
                 {
                     cantRosa += aumento;
                 }
-                else if(jugadores[0].playerNumber == 1)
+                else if (jugadores[0].playerNumber == 1)
                 {
                     cantRosa -= aumento;
                 }
@@ -99,13 +104,13 @@ public class FlagController : MonoBehaviour
                 barraRosa.fillAmount = cantRosa / 100f;
             }
         }
-        
+
     }
     private IEnumerator Win(int playerNumber)
     {
         AudioManager.Instance.StopMusic();
         AudioManager.Instance.PlayWin();
-        if(playerNumber == 2)
+        if (playerNumber == 2)
         {
             cartelRosa.SetActive(true);
         }
@@ -117,6 +122,17 @@ public class FlagController : MonoBehaviour
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator moverBandera()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(tiempoEntrePosiciones);
+            transform.position = posicionesBandera[numAleatorio].position;
+            numAleatorio = Random.Range(0, posicionesBandera.Length);
+            Debug.Log("La bandera se ha movido a la posición: " + transform.position);
+        }
     }
 }
 
