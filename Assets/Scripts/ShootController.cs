@@ -23,5 +23,10 @@ public class ShootController : MonoBehaviour
     }
 
 
-    void Shoot() { Instantiate(bulletPrefab, firePoint.position, firePoint.rotation); }
+    void Shoot()
+    {
+        BulletController bala = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<BulletController>();
+        // La bala guarda de qué jugador salió para poder no dañarlo
+        bala.playerNumber = playerNumber;
+    }
 }

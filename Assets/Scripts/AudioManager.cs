@@ -74,6 +74,11 @@ public class AudioManager : MonoBehaviour
     {
         sfxSource.PlayOneShot(golpeSfx);
     }
+    public void PlayMuerte()
+    {
+        if (deadSFX == null) return;
+        sfxSource.PlayOneShot(deadSFX);
+    }
     public void PlayDisparo()
     {
         sfxSource.PlayOneShot(shotSfx);
