@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FlagController : MonoBehaviour
 {
     [SerializeField]
     private Image barraRosa;
+    [SerializeField]
+    private GameObject cartelRosa;
+    [SerializeField]
+    private GameObject cartelVerde;
     [SerializeField]
     private float cantRosa = 50;
     [SerializeField]
@@ -83,15 +88,32 @@ public class FlagController : MonoBehaviour
                 if (cantRosa >= 100)
                 {
                     Debug.Log("gano el rosa");
+                    StartCoroutine(Win(2));
                 }
                 else if (cantRosa <= 0)
                 {
                     Debug.Log("gano el verde");
+                    StartCoroutine(Win(1));
                 }
                 barraRosa.fillAmount = cantRosa / 100f;
             }
         }
         
+    }
+    private IEnumerator Win(int playerNumber)
+    {
+        if(playerNumber == 2)
+        {
+            cartelRosa.SetActive(true);
+        }
+        else if (playerNumber == 1)
+        {
+            cartelVerde.SetActive(true);
+        }
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(4);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 

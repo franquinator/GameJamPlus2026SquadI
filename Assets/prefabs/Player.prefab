@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2175166156297802454}
   - component: {fileID: 7098314034021780208}
   - component: {fileID: 375319767661663877}
+  - component: {fileID: 2916288675100045091}
   - component: {fileID: 7272505668611549560}
   m_Layer: 0
   m_Name: Player
@@ -202,6 +203,23 @@ MonoBehaviour:
     m_Bits: 8
   radioSuelo: 0.35
   playerNumber: 1
+--- !u!114 &2916288675100045091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8072190084617204680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 447a21c9d51903044bc1cffef79d317b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
+  bulletPrefab: {fileID: 5834247972218037817, guid: 4fd5fc634ff186e4b89f991b605c869d, type: 3}
+  firePoint: {fileID: 0}
+  bulletSpeed: 15
+  fireRate: 0.5
 --- !u!95 &7272505668611549560
 Animator:
   serializedVersion: 5
