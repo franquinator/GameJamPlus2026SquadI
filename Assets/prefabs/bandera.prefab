@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barraRosa: {fileID: 0}
+  cartelRosa: {fileID: 0}
+  cartelVerde: {fileID: 0}
   cantRosa: 50
   cadaCuantoCambia: 1
   aumento: 5
