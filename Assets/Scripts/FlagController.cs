@@ -24,6 +24,10 @@ public class FlagController : MonoBehaviour
     [SerializeField] private Transform[] posicionesBandera;
     [SerializeField] private float tiempoEntrePosiciones = 10f;
     private int numAleatorio;
+    [SerializeField] private Sprite banderaBase;
+    [SerializeField] private Sprite banderaPlayer1;
+    [SerializeField] private Sprite banderaPlayer2;
+
     void Start()
     {
         colorFlag = GetComponent<SpriteRenderer>();
@@ -44,14 +48,17 @@ public class FlagController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadores.Add(other.GetComponent<PlayerController>());
-            if (jugadores.Count == 1)
+            if (jugadores.Count == 1 && jugadores[0].playerNumber == 2)
             {
-                Color colorTagNew = jugadores[0].GetComponent<SpriteRenderer>().color;
-                colorFlag.color = colorTagNew;
+                colorFlag.sprite = banderaPlayer2;
+            }
+            else if (jugadores.Count == 1 && jugadores[0].playerNumber == 1)
+            {
+                colorFlag.sprite = banderaPlayer1;
             }
             else
             {
-                colorFlag.color = Color.white;
+                colorFlag.sprite = banderaBase;
             }
 
         }
@@ -64,12 +71,18 @@ public class FlagController : MonoBehaviour
             jugadores.Remove(collision.GetComponent<PlayerController>());
             if (jugadores.Count == 1)
             {
-                Color colorTagNew = jugadores[0].GetComponent<SpriteRenderer>().color;
-                colorFlag.color = colorTagNew;
+                if (jugadores[0].playerNumber == 2)
+                {
+                    colorFlag.sprite = banderaPlayer2;
+                }
+                else if (jugadores[0].playerNumber == 1)
+                {
+                    colorFlag.sprite = banderaPlayer1;
+                }
             }
             else
             {
-                colorFlag.color = Color.white;
+                colorFlag.sprite = banderaBase;
             }
         }
     }
@@ -131,7 +144,6 @@ public class FlagController : MonoBehaviour
             yield return new WaitForSeconds(tiempoEntrePosiciones);
             transform.position = posicionesBandera[numAleatorio].position;
             numAleatorio = Random.Range(0, posicionesBandera.Length);
-            Debug.Log("La bandera se ha movido a la posición: " + transform.position);
         }
     }
 }
