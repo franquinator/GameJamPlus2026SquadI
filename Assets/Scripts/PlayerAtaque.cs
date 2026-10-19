@@ -88,7 +88,7 @@ public class PlayerAtaque : MonoBehaviour
         // Mantener la tecla de salto también sirve para apuntar los proyectiles hacia arriba
         Apuntar(Input.GetButton("Jump" + playerNumber));
 
-        if (Input.GetButtonDown("Fire" + playerNumber))
+        if (Input.GetButtonDown("Fire" + playerNumber) && Time.timeScale > 0)
         {
             if (tienePoder) UsarPoder();
             else AtacarConEspada();

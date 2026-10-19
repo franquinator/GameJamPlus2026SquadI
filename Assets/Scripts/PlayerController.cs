@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale <= 0)return;
         // MOVIMIENTO
         // Leer entrada horizontal (A/D o flechas izquierda/derecha)
         movimientoHorizontal = Input.GetAxisRaw("Horizontal" + playerNumber) * velocidad;
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void GestionarOrientacion()
     {
+        
         if (movimientoHorizontal > 0 && !mirandoDerecha)
         {
             Girar();
