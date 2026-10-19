@@ -78,10 +78,12 @@ public class PlayerController : MonoBehaviour
         if (movimientoHorizontal > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
+            mirandoDerecha = true;
         }
         else if (movimientoHorizontal < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
+            mirandoDerecha = false;
         }
     }
 
