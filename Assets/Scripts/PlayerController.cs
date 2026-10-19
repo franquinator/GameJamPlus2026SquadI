@@ -75,13 +75,13 @@ public class PlayerController : MonoBehaviour
     private void GestionarOrientacion()
     {
         
-        if (movimientoHorizontal > 0 && !mirandoDerecha)
+        if (movimientoHorizontal > 0)
         {
-            Girar();
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if (movimientoHorizontal < 0 && mirandoDerecha)
+        else if (movimientoHorizontal < 0)
         {
-            Girar();
+            transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
 
