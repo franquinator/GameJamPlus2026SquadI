@@ -18,14 +18,20 @@ public class PlayerController : MonoBehaviour
     private bool mirandoDerecha = true;
     public int playerNumber = 1;
 
+    private Congelamiento congelamiento;
+
     // Lo consultan otros scripts (por ejemplo PlayerAtaque) para saber hacia
     // dónde mira el personaje, ya que el salto se aplica girando el transform
     public bool MiraDerecha => mirandoDerecha;
+
+    // La cinta congela al jugador: mientras lo está no se mueve ni salta
+    private bool EstaCongelado => congelamiento != null && congelamiento.estaCongelado;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        congelamiento = GetComponent<Congelamiento>();
     }
 
     void Update()
@@ -37,7 +43,7 @@ public class PlayerController : MonoBehaviour
         // ANIMACIONES
         // Verificar si presionó saltar (Espacio)
 
-        if (Input.GetButtonDown("Jump" + playerNumber) && enSuelo)
+        if (Input.GetButtonDown("Jump" + playerNumber) && enSuelo && !EstaCongelado)
         {
             animator.SetTrigger("jump");
             AudioManager.Instance.PlaySalto();
@@ -54,6 +60,12 @@ public class PlayerController : MonoBehaviour
         // Comprobar si está tocando el suelo
         enSuelo = Physics2D.OverlapCircle(controladorSuelo.position, radioSuelo, queEsSuelo);
 
+        // Congelado: se frena en seco y se queda quieto en el aire
+        if (EstaCongelado)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
 
         // Aplicar movimiento horizontal
         rb.velocity = new Vector2(movimientoHorizontal, rb.velocity.y);

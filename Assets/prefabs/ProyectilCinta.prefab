@@ -138,3 +138,4 @@ MonoBehaviour:
   playerNumber: 1
   tipo: 2
   duracionCorte: 2
+  duracionCongelamiento: 2

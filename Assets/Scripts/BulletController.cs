@@ -16,6 +16,10 @@ public class BulletController : MonoBehaviour
     [Tooltip("Segundos que la plataforma desaparece después de ser cortada")]
     public float duracionCorte = 2f;
 
+    [Header("Cinta")]
+    [Tooltip("Segundos que el rival queda congelado tras recibir la cinta")]
+    public float duracionCongelamiento = 2f;
+
     private Rigidbody2D cuerpo;
 
     void Awake()
@@ -56,6 +60,14 @@ public class BulletController : MonoBehaviour
             // Solo daña al otro jugador. Si le pega a quien la disparó no le hace daño y sigue de largo
             if (objetivo != null && objetivo.playerNumber != playerNumber)
             {
+                // La cinta congela al rival al que le pega. Lo congela igual aunque
+                // el golpe no le haga daño: el poder no depende del daño
+                if (tipo == PowerUpType.Cinta)
+                {
+                    Congelamiento congelado = other.GetComponent<Congelamiento>();
+                    if (congelado != null) congelado.Congelar(duracionCongelamiento);
+                }
+
                 HealthManager salud = other.GetComponent<HealthManager>();
                 if (salud != null)
                 {

@@ -37,6 +37,7 @@ public class HealthManager : MonoBehaviour
     private Collider2D col;
     private PlayerController playerController;
     private PlayerAtaque playerAtaque;
+    private Congelamiento congelamiento;
 
     private Color colorBase;
     private Vector3 posicionInicio;
@@ -62,6 +63,7 @@ public class HealthManager : MonoBehaviour
         col = GetComponent<Collider2D>();
         playerController = GetComponent<PlayerController>();
         playerAtaque = GetComponent<PlayerAtaque>();
+        congelamiento = GetComponent<Congelamiento>();
 
         // Se guarda el color original (el tint del jugador) para no perderlo al tocar el alfa
         colorBase = sprite.color;
@@ -190,6 +192,8 @@ public class HealthManager : MonoBehaviour
             playerAtaque.QuitarPoder();
             playerAtaque.enabled = false;
         }
+        // Si estaba congelado al morir, se le saca el sprite de cinta de encima
+        if (congelamiento != null) congelamiento.QuitarCongelamiento();
         if (col != null) col.enabled = false;
         if (rb != null) rb.velocity = Vector2.zero;
 
@@ -275,6 +279,7 @@ public class HealthManager : MonoBehaviour
 
         if (playerController != null) playerController.enabled = true;
         if (playerAtaque != null) playerAtaque.enabled = true;
+        if (congelamiento != null) congelamiento.QuitarCongelamiento();
 
         muerto = false;
     }
