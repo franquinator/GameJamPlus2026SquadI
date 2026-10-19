@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 312503036}
   m_Layer: 4
   m_Name: pinche_plataforma_con_cinta_grande_0
-  m_TagString: Untagged
+  m_TagString: Peligro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.009481281, y: 0.10831867}
@@ -3184,7 +3184,7 @@ GameObject:
   - component: {fileID: 1618822251}
   m_Layer: 3
   m_Name: pinche_plataforma_sin_cinta_chico_0
-  m_TagString: Untagged
+  m_TagString: Peligro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3285,7 +3285,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06597376, y: -0.05016598}

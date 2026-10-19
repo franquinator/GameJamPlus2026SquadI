@@ -31,6 +31,11 @@ public class HealthManager : MonoBehaviour
     // Si se deja vacío se usa la posición en la que estaba el player al empezar
     public Transform puntoInicio;
 
+    [Header("Zonas peligrosas")]
+    // Los pinchos, la lava y eso llevan este tag y un collider trigger. No necesitan
+    // ningún script: el tag es lo único que hace falta
+    public string tagPeligro = "Peligro";
+
     private SpriteRenderer sprite;
     private Animator animator;
     private Rigidbody2D rb;
@@ -99,6 +104,19 @@ public class HealthManager : MonoBehaviour
         if (muerto || inmune) return;
 
         PerderVida();
+    }
+
+    // Zonas peligrosas: cualquier collider trigger con el tag de peligro quita vida
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag(tagPeligro)) RecibirDaño();
+    }
+
+    // También mientras sigue adentro: como RecibiDaño ignora el golpe mientras
+    // está inmune, el ritmo de daño queda en segundosInmune
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag(tagPeligro)) RecibirDaño();
     }
 
     // Resta una vida. Si se acaba, muere; si no, queda inmune unos segundos

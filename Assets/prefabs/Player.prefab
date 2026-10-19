@@ -567,6 +567,7 @@ MonoBehaviour:
   animacionMuerte: {fileID: 7400000, guid: 09d4a7c6c0a12cb49ad037b107362fcb, type: 2}
   segundosMuerte: 1.5
   puntoInicio: {fileID: 0}
+  tagPeligro: Peligro
 --- !u!1 &4128069753182647705
 GameObject:
   m_ObjectHideFlags: 0
