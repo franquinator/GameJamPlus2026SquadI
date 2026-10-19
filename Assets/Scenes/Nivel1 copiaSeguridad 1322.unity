@@ -3096,10 +3096,6 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2916288675100045091, guid: 5eb56c7ddc36fa7ff8b236b744a15fbc, type: 3}
-      propertyPath: playerNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8072190084617204680, guid: 5eb56c7ddc36fa7ff8b236b744a15fbc, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -3764,10 +3760,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2916288675100045091, guid: 5eb56c7ddc36fa7ff8b236b744a15fbc, type: 3}
-      propertyPath: firePoint
-      value: 
-      objectReference: {fileID: 372078146}
     - target: {fileID: 8072190084617204680, guid: 5eb56c7ddc36fa7ff8b236b744a15fbc, type: 3}
       propertyPath: m_Name
       value: Player

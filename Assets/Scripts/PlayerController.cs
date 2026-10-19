@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private bool mirandoDerecha = true;
     public int playerNumber = 1;
 
+    // Lo consultan otros scripts (por ejemplo PlayerAtaque) para saber hacia
+    // dónde mira el personaje, ya que el salto se aplica girando el transform
+    public bool MiraDerecha => mirandoDerecha;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

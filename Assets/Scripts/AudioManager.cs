@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusicMenu;
     public AudioClip[] jumpSFX;
     public AudioClip shotSfx;
+    public AudioClip swordSfx;
     public AudioClip golpeSfx;
     public AudioClip winSFX;
     public AudioClip powerupSFX;
@@ -81,6 +82,14 @@ public class AudioManager : MonoBehaviour
     public void PlayDisparo()
     {
         sfxSource.PlayOneShot(shotSfx);
+    }
+    public void PlayEspada()
+    {
+        PlaySFX(swordSfx);
+    }
+    public void PlayPowerUp()
+    {
+        PlaySFX(powerupSFX);
     }
     public void PlayFlagPoint()
     {

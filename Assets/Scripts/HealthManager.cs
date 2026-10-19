@@ -36,7 +36,7 @@ public class HealthManager : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
     private PlayerController playerController;
-    private ShootController shootController;
+    private PlayerAtaque playerAtaque;
 
     private Color colorBase;
     private Vector3 posicionInicio;
@@ -61,7 +61,7 @@ public class HealthManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         playerController = GetComponent<PlayerController>();
-        shootController = GetComponent<ShootController>();
+        playerAtaque = GetComponent<PlayerAtaque>();
 
         // Se guarda el color original (el tint del jugador) para no perderlo al tocar el alfa
         colorBase = sprite.color;
@@ -183,9 +183,13 @@ public class HealthManager : MonoBehaviour
         // Se deja el sprite opaco para que la animación de muerte se vea
         sprite.color = colorBase;
 
-        // Se apaga el control y las colisiones: muerto no se mueve, no dispara y no captura la bandera
+        // Se apaga el control y las colisiones: muerto no se mueve, no ataca y no captura la bandera
         if (playerController != null) playerController.enabled = false;
-        if (shootController != null) shootController.enabled = false;
+        if (playerAtaque != null)
+        {
+            playerAtaque.QuitarPoder();
+            playerAtaque.enabled = false;
+        }
         if (col != null) col.enabled = false;
         if (rb != null) rb.velocity = Vector2.zero;
 
@@ -270,7 +274,7 @@ public class HealthManager : MonoBehaviour
         }
 
         if (playerController != null) playerController.enabled = true;
-        if (shootController != null) shootController.enabled = true;
+        if (playerAtaque != null) playerAtaque.enabled = true;
 
         muerto = false;
     }
